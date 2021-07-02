@@ -54,6 +54,14 @@
         <div class="d-flex justify-content-center mb-4">
             {{ $posts->links() }}
         </div>
+        <h2 class="mt-4 mb-4 text-center">Most active users in the last 7 days</h2>
+        <div class="d-flex justify-content-center mb-4">
+            <ul class="list-group">
+                @foreach ($activeUsers as $user)
+                    <li class="list-group-item">{{ $user->name . ' posted ' . $user->posts_count . ' posts' }}</li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 </body>
 
