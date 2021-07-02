@@ -10,6 +10,12 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -19,7 +25,36 @@
 </head>
 
 <body>
-    
+    <div class="container">
+        <h1 class="text-center mb-4 mt-4">Posts</h1>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Body</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($posts as $post)
+                        <tr>
+                            <th scope="row">{{ $post->id }}</th>
+                            <td>{{ $post->title }}</td>
+                            <td>{{ $post->body }}</td>
+                            <td>{{ $post->user->name }}</td>
+                            <td>{{ $post->created_at }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center mb-4">
+            {{ $posts->links() }}
+        </div>
+    </div>
 </body>
 
 </html>
